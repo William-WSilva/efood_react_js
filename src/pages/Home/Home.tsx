@@ -6,7 +6,7 @@ import { LogoeFood } from '../../components/Logo/Logo'
 import variaveis from '../../styles/variaveis'
 import CardapioItem from '../../components/CardapioItem/CardapioItem'
 import macarrao from '../../images/macarrao.png'
-import { BtnTema } from '../../components/Botao/Botao'
+import CardapioItensData from './CardapioItensData'
 
 export const Home = () => {
   return (
@@ -19,14 +19,9 @@ export const Home = () => {
       </Header>
       <HCardapio>
         <section>
-          <CardapioItem
-            bkCardItem={variaveis.branco}
-            textColor={variaveis.vermelhoEscuro}
-            imageSrc={macarrao}
-            title="La Dolce Vita Trattoria"
-            description="A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!"
-            buttonText="Saiba mais"
-          />
+          {CardapioItensData.map((item, index) => (
+            <CardapioItem key={index} {...item} />
+          ))}
         </section>
       </HCardapio>
       <Rodape />

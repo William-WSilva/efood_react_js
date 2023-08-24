@@ -11,9 +11,13 @@ export const Perfil = () => {
   return (
     <>
       <Header style={{ display: 'flex', padding: '0 80px' }}>
-        <TextMed>Restaurante</TextMed>
+        <TextMed style={{ color: variaveis.vermelhoEscuro }}>
+          Restaurante
+        </TextMed>
         <LogoeFood />
-        <TextMed>0 produto(s) no carrinho</TextMed>
+        <TextMed style={{ color: variaveis.vermelhoEscuro }}>
+          0 produto(s) no carrinho
+        </TextMed>
       </Header>
       <PBanner></PBanner>
       <PCardapio>
@@ -25,6 +29,8 @@ export const Perfil = () => {
             title="La Dolce Vita Trattoria"
             description="A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!"
             buttonText="Adicionar ao carrinho"
+            fullWidth={true}
+            isHomePage={false}
           />
         </section>
       </PCardapio>

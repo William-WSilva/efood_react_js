@@ -5,6 +5,7 @@ type ButtonProps = {
   fontSize?: string
   backgroundColor?: string
   color?: string
+  fullWidth?: boolean // Adicione a prop fullWidth
 }
 
 export const Botao = styled.button<ButtonProps>`
@@ -18,4 +19,6 @@ export const Botao = styled.button<ButtonProps>`
   font-size: ${({ fontSize }) => fontSize || '12px'};
   background-color: ${({ backgroundColor }) =>
     backgroundColor || variaveis.vermelhoEscuro};
+  width: ${({ fullWidth }) =>
+    fullWidth ? '100%' : 'auto'}; // Aplique a largura conforme a prop fullWidth
 `
