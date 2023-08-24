@@ -1,16 +1,11 @@
-import { TextBig } from '../../styles/styles'
+import React, { CSSProperties, ReactNode } from 'react'
 import { HeaderBanner } from './HeaderStyle'
-import { LogoeFood } from '../Logo/Logo'
 
-export const Header = () => {
-  return (
-    <>
-      <HeaderBanner>
-        <LogoeFood />
-        <TextBig style={{ textAlign: 'center' }}>
-          Viva experiências gastronômicas <br /> no conforto da sua casa
-        </TextBig>
-      </HeaderBanner>
-    </>
-  )
+type HeaderProps = {
+  children?: ReactNode
+  style?: CSSProperties
+}
+
+export const Header = ({ children, style }: HeaderProps) => {
+  return <HeaderBanner style={style}>{children}</HeaderBanner>
 }

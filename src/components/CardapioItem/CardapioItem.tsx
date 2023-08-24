@@ -1,25 +1,59 @@
-import { TextMed, TextPeq } from '../../styles/styles'
-import { Bk_Prato } from './CardapioItemStyle'
+import React, { CSSProperties, FC } from 'react'
+import {
+  Bk_Prato,
+  CardInfo,
+  CardItem,
+  CardTitleNota
+} from './CardapioItemStyle'
 import { BtnTema } from '../Botao/Botao'
+import { TextMed, TextPeq } from '../../styles/styles'
 
-export const CardapioItem = () => {
+type CardapioItemProps = {
+  bkCardItem?: string
+  textColor?: string // Renomeie para textColor
+  imageSrc: string
+  title: string
+  description: string
+  buttonText: string
+}
+
+const CardapioItem: FC<CardapioItemProps> = ({
+  bkCardItem,
+  textColor, // Renomeie para textColor
+  imageSrc,
+  title,
+  description,
+  buttonText
+}) => {
   return (
-    <>
+    <CardItem bkCardItem={bkCardItem}>
       <div>
-        <div>
-          <Bk_Prato>
-            <BtnTema fontSize={'12px'}>Italiana</BtnTema>
-          </Bk_Prato>
-        </div>
-        <TextMed>Hioki Sushi</TextMed>
-        <TextPeq>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-          Exercitationem vero assumenda reiciendis, aperiam fuga autem ducimus
-          eveniet eos blanditiis officiis odio voluptas dolor similique. Aliquam
-          quibusdam ipsum illum debitis accusantium.
-        </TextPeq>
-        <BtnTema fontSize={'16px'}>Saiba mais</BtnTema>
+        <Bk_Prato image={imageSrc}>
+          {/* Conteúdo da imagem e botão aqui */}
+        </Bk_Prato>
       </div>
-    </>
+      <CardInfo textColor={textColor}>
+        {' '}
+        {/* Passe a prop textColor para CardInfo */}
+        <div>
+          <CardTitleNota>
+            <TextMed>{title}</TextMed>
+            {/* Estrelas e avaliação aqui */}
+          </CardTitleNota>
+        </div>
+        <TextPeq style={{ margin: '16px 0', color: textColor }}>
+          {description}
+        </TextPeq>
+        <BtnTema
+          fontSize={'16px'}
+          backgroundColor={textColor}
+          color={bkCardItem}
+        >
+          {buttonText}
+        </BtnTema>
+      </CardInfo>
+    </CardItem>
   )
 }
+
+export default CardapioItem

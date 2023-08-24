@@ -1,14 +1,12 @@
 header{
-  background-image: url('../src/images/Bk_Header.png');
-  background-repeat: no-repeat;
-  background-size: contain;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 8px;
   height: 100px;
-  width: 100%;
-  font-weight: normal;
-  font-weight: bold;
-  padding: 0 4px;
-  font-size: 12px;
-  cursor: pointer;
-  border: none;
+  background-image: url();
+  background-repeat: no-repeat;
+  background-color: ;
+
 
 }
