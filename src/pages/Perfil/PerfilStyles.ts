@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import variaveis from '../../styles/variaveis'
-import pratoBanner from '../../images/pratoBanner.png'
+import pratoBanner from '../../images/cardapioBanner.jpg'
 
 export const PCardapio = styled.section`
   padding: 80px;
@@ -29,8 +29,25 @@ export const PCardapio = styled.section`
 `
 
 export const PBanner = styled.section`
-  height: 280px;
   background-image: url(${pratoBanner});
   background-size: cover;
   background-repeat: no-repeat;
+  height: 280px;
+  color: ${variaveis.branco};
+
+  div {
+    padding: 32px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 28px;
+
+    :nth-child(2) {
+      font-weight: bold;
+    }
+  }
 `

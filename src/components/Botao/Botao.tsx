@@ -1,6 +1,7 @@
+import { ButtonHTMLAttributes } from 'react'
 import { Botao } from './BotaoStyle'
 
-type Props = {
+type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   children?: string
   fontSize?: string
   backgroundColor?: string
@@ -13,10 +14,12 @@ export const BtnTema = ({
   fontSize,
   backgroundColor,
   color,
-  fullWidth
+  fullWidth,
+  ...props
 }: Props) => {
   return (
     <Botao
+      {...props}
       fontSize={fontSize}
       backgroundColor={backgroundColor}
       color={color}

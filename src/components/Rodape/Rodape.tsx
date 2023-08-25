@@ -11,11 +11,25 @@ export const Rodape = () => {
       <Footer>
         <LogoeFood />
         <div>
-          <img src={instagram} alt="" />
-          <img src={facebook} alt="" />
-          <img src={twitter} alt="" />
+          <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
+            <img src={instagram} alt="" />
+          </a>
+          <a
+            href="https://pt-br.facebook.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img src={facebook} alt="" />
+          </a>
+          <a
+            href="https://twitter.com/?lang=pt"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img src={twitter} alt="" />
+          </a>
         </div>
-        <TextMin>
+        <TextMin style={{ textAlign: 'center', width: '600px' }}>
           A efood é uma plataforma para divulgação de estabelecimentos, a
           responsabilidade pela entrega, qualidade dos produtos é toda do
           estabelecimento contratado.

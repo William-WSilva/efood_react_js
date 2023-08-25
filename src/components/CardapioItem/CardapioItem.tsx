@@ -10,6 +10,8 @@ import { TextMed, TextPeq } from '../../styles/styles'
 import star from '../../images/star.png'
 
 type CardapioItemProps = {
+  handleBtnClick: (id: number, category: string) => void
+  id: number
   bkCardItem?: string
   textColor?: string
   imageSrc: string
@@ -19,9 +21,12 @@ type CardapioItemProps = {
   fullWidth?: boolean
   isHomePage?: boolean // Adicione esta prop para indicar se é a página Home
   category?: string // Adicione a propriedade 'category'
+  nota?: string
 }
 
 const CardapioItem: FC<CardapioItemProps> = ({
+  handleBtnClick,
+  id,
   bkCardItem,
   textColor,
   imageSrc,
@@ -30,7 +35,8 @@ const CardapioItem: FC<CardapioItemProps> = ({
   buttonText,
   fullWidth,
   isHomePage,
-  category
+  category,
+  nota
 }) => {
   return (
     <CardItem bkCardItem={bkCardItem}>
@@ -49,7 +55,7 @@ const CardapioItem: FC<CardapioItemProps> = ({
             <TextMed>{title}</TextMed>
             {isHomePage && ( // Renderiza o conteúdo das estrelas apenas na página Home
               <div>
-                <TextMed>4.9</TextMed>
+                <TextMed>{nota}</TextMed>
                 <img src={star} alt="foto Estrela" />
               </div>
             )}
@@ -63,6 +69,7 @@ const CardapioItem: FC<CardapioItemProps> = ({
           backgroundColor={textColor}
           color={bkCardItem}
           fullWidth={fullWidth}
+          onClick={() => handleBtnClick(id, category as string)}
         >
           {buttonText}
         </BtnTema>

@@ -1,12 +1,19 @@
 header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  padding-bottom: 8px;
-  height: 100px;
-  background-image: url();
-  background-repeat: no-repeat;
-  background-color: ;
+  align-items: center;
+  flex-direction: column;
+  text-decoration: none;
+  background-color: #000;
+  font-weight: bold;
+
+
+
 
 
 }
