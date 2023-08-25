@@ -29,7 +29,7 @@ export const Rodape = () => {
             <img src={twitter} alt="" />
           </a>
         </div>
-        <TextMin style={{ textAlign: 'center', width: '600px' }}>
+        <TextMin style={{ textAlign: 'center' }}>
           A efood é uma plataforma para divulgação de estabelecimentos, a
           responsabilidade pela entrega, qualidade dos produtos é toda do
           estabelecimento contratado.

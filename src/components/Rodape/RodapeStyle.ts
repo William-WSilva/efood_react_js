@@ -13,4 +13,10 @@ export const Footer = styled.footer`
   img {
     margin-right: 8px;
   }
+
+  @media (max-width: 768px) {
+    h6 {
+      width: 300px;
+    }
+  }
 `

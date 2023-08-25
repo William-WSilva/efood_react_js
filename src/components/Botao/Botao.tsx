@@ -1,29 +1,35 @@
-import { ButtonHTMLAttributes } from 'react'
 import { Botao } from './BotaoStyle'
 
-type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
+type Props = {
   children?: string
-  fontSize?: string
-  backgroundColor?: string
+  bkColor?: string
   color?: string
-  fullWidth?: boolean
+  width?: string
+  fontSize?: string
+  onClick?: () => void
 }
 
 export const BtnTema = ({
   children,
-  fontSize,
-  backgroundColor,
+  bkColor,
   color,
-  fullWidth,
-  ...props
+  width,
+  fontSize,
+  onClick
 }: Props) => {
+  function handleClick() {
+    if (onClick) {
+      onClick()
+    }
+  }
+
   return (
     <Botao
-      {...props}
-      fontSize={fontSize}
-      backgroundColor={backgroundColor}
+      bkColor={bkColor}
       color={color}
-      fullWidth={fullWidth}
+      onClick={handleClick}
+      width={width}
+      fontSize={fontSize}
     >
       {children}
     </Botao>

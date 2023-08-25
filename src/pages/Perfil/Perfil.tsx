@@ -1,20 +1,45 @@
-import CardapioItem from '../../components/CardapioItem/CardapioItem'
+import { useLocation } from 'react-router-dom'
 import { Header } from '../../components/Header/Header'
 import { LogoeFood } from '../../components/Logo/Logo'
 import { Rodape } from '../../components/Rodape/Rodape'
-import { TextMed } from '../../styles/styles'
+import { TextMed, TextPeq } from '../../styles/styles'
 import variaveis from '../../styles/variaveis'
-import { PBanner, PCardapio } from './PerfilStyles'
-import { CardapioItensPerfil } from './CardapioItensPerfil'
+import { PBanner, PCardapio, PPrato } from './PerfilStyles'
 import { BtnNav as Link } from '../../components/BtnNav/BtnNavStyle'
-import { useState } from 'react'
+import { BtnTema } from '../../components/Botao/Botao'
+import { CardapioAlema } from './Cardapios/alema'
+import { CardapioBrasileira } from './Cardapios/brasileira'
+import { CardapioFrancesa } from './Cardapios/francesa'
+import { CardapioItaliana } from './Cardapios/italiana'
+import { CardapioJaponesa } from './Cardapios/japonesa'
+import { CardapioPortuguesa } from './Cardapios/portuguesa'
 
 export const Perfil = () => {
-  const [selectedCategory, setSelectedCategory] = useState('')
+  const location = useLocation()
+  const { category, title } = location.state
+  let selectedCardapio: any[] = []
 
-  const handleBtnClick = (id: number, category: string) => {
-    setSelectedCategory(category)
-    // Aqui você pode usar o ID para outras funcionalidades, se necessário
+  switch (category) {
+    case 'Alemã':
+      selectedCardapio = CardapioAlema
+      break
+    case 'Brasileira':
+      selectedCardapio = CardapioBrasileira
+      break
+    case 'Francesa':
+      selectedCardapio = CardapioFrancesa
+      break
+    case 'Italiana':
+      selectedCardapio = CardapioItaliana
+      break
+    case 'Japonesa':
+      selectedCardapio = CardapioJaponesa
+      break
+    case 'Portuguêsa':
+      selectedCardapio = CardapioPortuguesa
+      break
+    default:
+      selectedCardapio = []
   }
 
   return (
@@ -31,28 +56,26 @@ export const Perfil = () => {
       </Header>
       <PBanner>
         <div>
-          <span>{selectedCategory}</span>
-          <span>La Dolce Vita Trattoria</span>
+          <span>{category}</span>
+          <span>{title}</span>
         </div>
       </PBanner>
       <PCardapio>
         <section>
-          {CardapioItensPerfil.map((item, index) => (
-            <CardapioItem
-              key={index}
-              id={item.id}
-              title={item.title}
-              category={item.category}
-              nota={item.nota}
-              imageSrc={item.imageSrc}
-              description={item.description}
-              handleBtnClick={handleBtnClick}
-              bkCardItem={variaveis.vermelhoEscuro}
-              textColor={variaveis.branco}
-              buttonText="Adicionar ao carrinho"
-              fullWidth={true}
-              isHomePage={false}
-            />
+          {selectedCardapio.map((item) => (
+            <PPrato key={item.id}>
+              <img src={item.imageSrc} alt="" />
+              <TextMed>{item.title}</TextMed>
+              <TextPeq>{item.description}</TextPeq>
+              <BtnTema
+                width={'100%'}
+                bkColor={variaveis.branco}
+                color={variaveis.vermelhoEscuro}
+                fontSize={'14px'}
+              >
+                Adicionar ao carrinho
+              </BtnTema>
+            </PPrato>
           ))}
         </section>
       </PCardapio>

@@ -15,7 +15,7 @@ export const BtnNav = styled(Link)`
   cursor: pointer;
   font-size: 16px;
   position: fixed;
-  top: 8px;
-  left: 8px;
+  top: 4px;
+  left: 4px;
 `
 export { Link }

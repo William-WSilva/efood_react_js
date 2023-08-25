@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import variaveis from '../../styles/variaveis'
-import pratoBanner from '../../images/cardapioBanner.jpg'
+import pratoBanner from '../../images/pratoBanner3.jpeg'
 
 export const PCardapio = styled.section`
   padding: 80px;
@@ -14,10 +14,6 @@ export const PCardapio = styled.section`
     grid-template-columns: 1fr 1fr 1fr;
     gap: 32px;
 
-    CardapioItem {
-      background-color: ${variaveis.vermelhoEscuro};
-    }
-
     @media (max-width: 768px) {
       grid-template-columns: 1fr;
     }
@@ -25,6 +21,25 @@ export const PCardapio = styled.section`
 
   @media (max-width: 768px) {
     padding: 16px;
+  }
+`
+export const PPrato = styled.div`
+  background-color: ${variaveis.vermelhoEscuro};
+  padding: 8px;
+
+  h3 {
+    color: ${variaveis.branco};
+  }
+
+  h6 {
+    color: ${variaveis.branco};
+    height: 100px;
+    padding: 8px 0;
+  }
+
+  img {
+    height: 250px;
+    width: 100%;
   }
 `
 
