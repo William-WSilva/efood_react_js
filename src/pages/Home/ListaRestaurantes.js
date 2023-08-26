@@ -17,7 +17,7 @@ const Restaurantes = [
   },
   {
     id: 2,
-    title: 'Delícias Francesas',
+    title: 'Le Charme Parisien',
     category: 'Francesa',
     description:
       'Transporte seu paladar para a França com o Delivery Delícias Francesas! De croissants escamosos a coq au vin, nossos pratos autênticos trazem a elegância da culinária francesa',
@@ -36,7 +36,7 @@ const Restaurantes = [
   {
     id: 4,
     title: 'Sabor Lusitano',
-    category: 'Portuguêsa',
+    category: 'Portuguesa',
     description:
       'Sinta a saudade de Portugal com o Português Delivery. Dos sabores do bacalhau à riqueza das pastelarias, oferecemos a você todo cardápio á pronta entrega.',
     nota: ' 4.7',

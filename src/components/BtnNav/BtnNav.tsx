@@ -1,7 +1,9 @@
-import { Link } from './BtnNavStyle'
+import { Link as RouterLink } from 'react-router-dom' // Importar o Link correto do react-router-dom
 
 type Props = {
-  Children: string
+  children: string // Corrigindo o nome da prop para 'children' (em minúsculas)
 }
 
-export const BtnNav = ({ Children }: Props) => <Link to={''}>{Children}</Link>
+export const BtnNav = ({ children }: Props) => (
+  <RouterLink to={''}>{children}</RouterLink>
+)

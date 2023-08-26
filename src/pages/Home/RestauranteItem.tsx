@@ -21,10 +21,7 @@ export const RestauranteItem = ({
   ResImg
 }: Props) => {
   const navigate = useNavigate()
-  function clicou(title: string, category: string) {
-    console.log(`O category é:  ${category}`)
-    console.log(`O titulo é:  ${title}`)
-
+  function restaurantInfos(title: string, category: string) {
     navigate(`/perfil`, { state: { category, title } })
   }
 
@@ -45,7 +42,7 @@ export const RestauranteItem = ({
           <TextPeq>{descricao}</TextPeq>
           <BtnTema
             color={variaveis.branco}
-            onClick={() => clicou(title, category)}
+            onClick={() => restaurantInfos(title, category)}
           >
             Saiba mais
           </BtnTema>

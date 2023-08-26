@@ -13,10 +13,15 @@ import { CardapioFrancesa } from './Cardapios/francesa'
 import { CardapioItaliana } from './Cardapios/italiana'
 import { CardapioJaponesa } from './Cardapios/japonesa'
 import { CardapioPortuguesa } from './Cardapios/portuguesa'
+import restaurant from '../../images/restaurant.png'
+import Restaurantes from '../Home/ListaRestaurantes'
 
 export const Perfil = () => {
   const location = useLocation()
-  const { category, title } = location.state
+  const { category, title } = location.state || {
+    category: Restaurantes[0].category,
+    title: Restaurantes[0].title
+  }
   let selectedCardapio: any[] = []
 
   switch (category) {
@@ -35,7 +40,7 @@ export const Perfil = () => {
     case 'Japonesa':
       selectedCardapio = CardapioJaponesa
       break
-    case 'Portuguêsa':
+    case 'Portuguesa':
       selectedCardapio = CardapioPortuguesa
       break
     default:
@@ -45,7 +50,9 @@ export const Perfil = () => {
   return (
     <>
       <Header style={{ display: 'flex', padding: '0 80px' }}>
-        <Link to="/">Home</Link>
+        <Link to="/">
+          <img src={restaurant} alt="" />
+        </Link>
         <TextMed style={{ color: variaveis.vermelhoEscuro }}>
           Restaurante
         </TextMed>
