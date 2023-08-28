@@ -3,5 +3,6 @@ export default {
   vermelhoEscuro: '#E66767',
   btnFonte: '#ffebd9',
   bgClaro: '#fff8f2',
-  branco: '#fff'
+  branco: '#fff',
+  preto: '#000'
 }

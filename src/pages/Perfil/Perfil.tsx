@@ -4,29 +4,56 @@ import { LogoeFood } from '../../components/Logo/Logo'
 import { Rodape } from '../../components/Rodape/Rodape'
 import { TextMed, TextPeq } from '../../styles/styles'
 import variaveis from '../../styles/variaveis'
-import { PBanner, PCardapio, PPrato } from './PerfilStyles'
+import { Modal, ModalItem, PBanner, PCardapio, PPrato } from './PerfilStyles'
 import { BtnNav as Link } from '../../components/BtnNav/BtnNavStyle'
 import { BtnTema } from '../../components/Botao/Botao'
 import restaurant from '../../images/restaurant.png'
-import { useRestaurantes } from '../../RestaurantesAPI/RestaurantesAPI'
+import {
+  CardapioItem,
+  useRestaurantes
+} from '../../RestaurantesAPI/RestaurantesAPI'
+import { useState } from 'react'
 
 export const Perfil = () => {
   const location = useLocation()
   const { state } = location
-  const selectedRestaurantId = state?.id || 0
+  const selectedRestaurantId = state?.id
   const restaurantes = useRestaurantes()
-  // Encontre o restaurante com base no ID passado
+  const [showModal, setShowModal] = useState(false)
+  const [selectedPrato, setSelectedPrato] = useState<CardapioItem | null>(null)
+
   const restauranteSelecionado = restaurantes.find(
+    // buscar restaurante pelo id
     (restaurante) => restaurante.id === selectedRestaurantId
   )
-  // Se o restaurante for encontrado, use o seu cardápio
   const selectedCardapio = restauranteSelecionado?.cardapio || []
-  console.log(selectedCardapio)
+  function primMaiuscula(str: string) {
+    // primeira letra Tipo restaurane em Maiuscula
+    if (typeof str !== 'string' || str.length === 0) {
+      return str
+    }
+    return str.charAt(0).toUpperCase() + str.slice(1)
+  }
+
+  const openModal = (prato: CardapioItem) => {
+    setSelectedPrato(prato)
+    setShowModal(true)
+  }
+
+  const closeModal = () => {
+    setSelectedPrato(null)
+    setShowModal(false)
+  }
+
   return (
     <>
       <Header style={{ display: 'flex', padding: '0 80px' }}>
         <Link to="/">
-          <img src={restaurant} alt="" />
+          <img
+            src={restaurant}
+            alt="Icone Restaurantes"
+            title="Acessar Restaurantes"
+          />
         </Link>
         <TextMed style={{ color: variaveis.vermelhoEscuro }}>
           Restaurante
@@ -38,7 +65,7 @@ export const Perfil = () => {
       </Header>
       <PBanner>
         <div>
-          <span>{restauranteSelecionado?.tipo}</span>
+          <span>{primMaiuscula(restauranteSelecionado?.tipo as string)}</span>
           <span>{restauranteSelecionado?.titulo}</span>
         </div>
       </PBanner>
@@ -54,13 +81,40 @@ export const Perfil = () => {
                 bkColor={variaveis.branco}
                 color={variaveis.vermelhoEscuro}
                 fontSize={'14px'}
+                onClick={() => openModal(prato)}
               >
-                Adicionar ao carrinho
+                Mais detalhes
               </BtnTema>
             </PPrato>
           ))}
         </section>
       </PCardapio>
+      {selectedPrato && (
+        <Modal>
+          <ModalItem>
+            <a onClick={closeModal} />
+            <img src={selectedPrato.foto} alt="" />
+            <div>
+              <TextMed style={{ color: variaveis.branco }}>
+                {selectedPrato.nome}
+              </TextMed>
+              <TextPeq style={{ color: variaveis.branco }}>
+                {selectedPrato.descricao} <br />
+                <br />
+                {selectedPrato.porcao}
+              </TextPeq>
+              <BtnTema
+                width={'50%'}
+                bkColor={variaveis.branco}
+                color={variaveis.vermelhoEscuro}
+                fontSize={'14px'}
+              >
+                {`Adicionar ao carrinho - ${selectedPrato.preco}`}
+              </BtnTema>
+            </div>
+          </ModalItem>
+        </Modal>
+      )}
       <Rodape />
     </>
   )

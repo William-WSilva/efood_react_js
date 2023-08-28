@@ -18,9 +18,9 @@ export const Home = () => {
         <TextBig style={{ textAlign: 'center' }}>
           Viva experiências gastronômicas <br /> no conforto da sua casa
         </TextBig>
-        <Link to={'/perfil'}>
+        {/* <Link to={'/perfil'}>
           <img src={pratos} alt="Foto Pratos" />
-        </Link>
+        </Link> */}
       </Header>
       <HRestaurantes>
         <TextBig>Retaurantes</TextBig>
@@ -34,6 +34,7 @@ export const Home = () => {
               avaliacao={restaurante.avaliacao}
               tipo={restaurante.tipo}
               ResImg={restaurante.capa}
+              destacado={restaurante.destacado}
             />
           ))}
         </section>

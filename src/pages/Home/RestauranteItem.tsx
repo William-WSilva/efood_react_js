@@ -12,6 +12,7 @@ type Props = {
   descricao: string
   ResImg: string
   title: string
+  destacado: boolean
 }
 
 export const RestauranteItem = ({
@@ -20,7 +21,8 @@ export const RestauranteItem = ({
   title,
   avaliacao,
   ResImg,
-  tipo
+  tipo,
+  destacado
 }: Props) => {
   const navigate = useNavigate()
   function restaurantInfos(id: number) {
@@ -31,6 +33,11 @@ export const RestauranteItem = ({
     <>
       <div>
         <BkRestaurante ResImg={ResImg}>
+          {destacado && (
+            <span style={{ marginRight: '8px' }}>
+              <BtnTema color={variaveis.branco}>Destaque da semana</BtnTema>
+            </span>
+          )}
           <BtnTema color={variaveis.branco}>{tipo}</BtnTema>
         </BkRestaurante>
         <RestauranteCardInfo>

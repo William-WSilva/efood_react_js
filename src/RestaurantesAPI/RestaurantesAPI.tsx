@@ -16,7 +16,6 @@ export type Restaurantes = {
   capa: string
   cardapio: CardapioItem[]
 }
-
 export type CardapioItem = {
   foto: string
   preco: number
