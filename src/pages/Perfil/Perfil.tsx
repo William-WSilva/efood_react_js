@@ -4,7 +4,7 @@ import { LogoeFood } from '../../components/Logo/Logo'
 import { Rodape } from '../../components/Rodape/Rodape'
 import { TextMed, TextPeq } from '../../styles/styles'
 import variaveis from '../../styles/variaveis'
-import { Modal, ModalItem, PBanner, PCardapio, PPrato } from './PerfilStyles'
+import { BgModal, Modal, PBanner, PCardapio, PPrato } from './PerfilStyles'
 import { BtnNav as Link } from '../../components/BtnNav/BtnNavStyle'
 import { BtnTema } from '../../components/Botao/Botao'
 import restaurant from '../../images/restaurant.png'
@@ -28,7 +28,7 @@ export const Perfil = () => {
   )
   const selectedCardapio = restauranteSelecionado?.cardapio || []
   function primMaiuscula(str: string) {
-    // primeira letra Tipo restaurane em Maiuscula
+    // primeira letra Tipo restaurate em Maiuscula
     if (typeof str !== 'string' || str.length === 0) {
       return str
     }
@@ -36,11 +36,13 @@ export const Perfil = () => {
   }
 
   const openModal = (prato: CardapioItem) => {
+    // Abrir Modal prato
     setSelectedPrato(prato)
     setShowModal(true)
   }
 
   const closeModal = () => {
+    // fechar Modal prato
     setSelectedPrato(null)
     setShowModal(false)
   }
@@ -90,8 +92,8 @@ export const Perfil = () => {
         </section>
       </PCardapio>
       {selectedPrato && (
-        <Modal>
-          <ModalItem>
+        <BgModal>
+          <Modal>
             <a onClick={closeModal} />
             <img src={selectedPrato.foto} alt="" />
             <div>
@@ -112,8 +114,8 @@ export const Perfil = () => {
                 {`Adicionar ao carrinho - ${selectedPrato.preco}`}
               </BtnTema>
             </div>
-          </ModalItem>
-        </Modal>
+          </Modal>
+        </BgModal>
       )}
       <Rodape />
     </>

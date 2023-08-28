@@ -69,7 +69,7 @@ export const PBanner = styled.section`
   }
 `
 
-export const Modal = styled.div`
+export const BgModal = styled.div`
   width: 100%;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.8);
@@ -78,20 +78,25 @@ export const Modal = styled.div`
   left: 0;
 `
 
-export const ModalItem = styled.div`
+export const Modal = styled.div`
   background-color: ${variaveis.vermelhoEscuro};
   padding: 32px;
   display: flex;
   width: 960px;
-  height: 400px;
+  height: 380px;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 
+  @media (max-width: 768px) {
+    flex-direction: column;
+    width: 340px;
+    height: 500px;
+  }
+
   div {
     width: 100%;
-    margin-left: 16px;
 
     h6 {
       margin: 16px 0;
@@ -102,8 +107,8 @@ export const ModalItem = styled.div`
     background-image: url(${close});
     background-size: cover;
     background-repeat: no-repeat;
-    height: 18px;
-    width: 18px;
+    height: 24px;
+    width: 24px;
     border: 1px solid ${variaveis.branco};
     cursor: pointer;
     position: absolute;
@@ -114,5 +119,17 @@ export const ModalItem = styled.div`
   img {
     height: 100%;
     width: 40%;
+    margin-right: 16px;
+
+    @media (max-width: 768px) {
+      width: 100%;
+      margin-bottom: 16px;
+    }
+  }
+
+  button {
+    @media (max-width: 768px) {
+      width: 100%;
+    }
   }
 `

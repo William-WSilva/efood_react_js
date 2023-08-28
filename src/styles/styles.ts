@@ -16,6 +16,10 @@ export const TextBig = styled.h2`
   color: ${variaveis.vermelhoEscuro};
   font-size: 28px;
   font-weight: bold;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
 `
 export const TextMed = styled.h3`
   color: ${variaveis.vermelhoEscuro};
