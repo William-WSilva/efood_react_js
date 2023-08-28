@@ -7,46 +7,21 @@ import variaveis from '../../styles/variaveis'
 import { PBanner, PCardapio, PPrato } from './PerfilStyles'
 import { BtnNav as Link } from '../../components/BtnNav/BtnNavStyle'
 import { BtnTema } from '../../components/Botao/Botao'
-import { CardapioAlema } from './Cardapios/alema'
-import { CardapioBrasileira } from './Cardapios/brasileira'
-import { CardapioFrancesa } from './Cardapios/francesa'
-import { CardapioItaliana } from './Cardapios/italiana'
-import { CardapioJaponesa } from './Cardapios/japonesa'
-import { CardapioPortuguesa } from './Cardapios/portuguesa'
 import restaurant from '../../images/restaurant.png'
-import Restaurantes from '../Home/ListaRestaurantes'
+import { useRestaurantes } from '../../RestaurantesAPI/RestaurantesAPI'
 
 export const Perfil = () => {
   const location = useLocation()
-  const { category, title } = location.state || {
-    category: Restaurantes[0].category,
-    title: Restaurantes[0].title
-  }
-  let selectedCardapio: any[] = []
-
-  switch (category) {
-    case 'Alemã':
-      selectedCardapio = CardapioAlema
-      break
-    case 'Brasileira':
-      selectedCardapio = CardapioBrasileira
-      break
-    case 'Francesa':
-      selectedCardapio = CardapioFrancesa
-      break
-    case 'Italiana':
-      selectedCardapio = CardapioItaliana
-      break
-    case 'Japonesa':
-      selectedCardapio = CardapioJaponesa
-      break
-    case 'Portuguesa':
-      selectedCardapio = CardapioPortuguesa
-      break
-    default:
-      selectedCardapio = []
-  }
-
+  const { state } = location
+  const selectedRestaurantId = state?.id || 0
+  const restaurantes = useRestaurantes()
+  // Encontre o restaurante com base no ID passado
+  const restauranteSelecionado = restaurantes.find(
+    (restaurante) => restaurante.id === selectedRestaurantId
+  )
+  // Se o restaurante for encontrado, use o seu cardápio
+  const selectedCardapio = restauranteSelecionado?.cardapio || []
+  console.log(selectedCardapio)
   return (
     <>
       <Header style={{ display: 'flex', padding: '0 80px' }}>
@@ -63,17 +38,17 @@ export const Perfil = () => {
       </Header>
       <PBanner>
         <div>
-          <span>{category}</span>
-          <span>{title}</span>
+          <span>{restauranteSelecionado?.tipo}</span>
+          <span>{restauranteSelecionado?.titulo}</span>
         </div>
       </PBanner>
       <PCardapio>
         <section>
-          {selectedCardapio.map((item) => (
-            <PPrato key={item.id}>
-              <img src={item.imageSrc} alt="" />
-              <TextMed>{item.title}</TextMed>
-              <TextPeq>{item.description}</TextPeq>
+          {selectedCardapio.map((prato) => (
+            <PPrato key={prato.id}>
+              <img src={prato.foto} alt="" />
+              <TextMed>{prato.nome}</TextMed>
+              <TextPeq>{prato.descricao}</TextPeq>
               <BtnTema
                 width={'100%'}
                 bkColor={variaveis.branco}

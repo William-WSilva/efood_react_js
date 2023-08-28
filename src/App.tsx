@@ -1,15 +1,16 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom' // importação das bibliotecas de rotas
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { EstiloGlobal } from './styles/styles'
 import { Home } from './pages/Home/Home'
 import { Perfil } from './pages/Perfil/Perfil'
+import { RestaurantesProvider } from './RestaurantesAPI/RestaurantesAPI' // Importar o Provider
 
 const rotas = createBrowserRouter([
   {
-    path: '/', // rota padrão
+    path: '/',
     element: <Home />
   },
   {
-    path: '/perfil', // rota Cadastro
+    path: '/perfil',
     element: <Perfil />
   }
 ])
@@ -18,7 +19,11 @@ function App() {
   return (
     <>
       <EstiloGlobal />
-      <RouterProvider router={rotas} />
+      <RestaurantesProvider>
+        {' '}
+        {/* Adicionar o Provider aqui */}
+        <RouterProvider router={rotas} />
+      </RestaurantesProvider>
     </>
   )
 }

@@ -33,8 +33,9 @@ export const PPrato = styled.div`
 
   h6 {
     color: ${variaveis.branco};
-    height: 100px;
+    height: 120px;
     padding: 8px 0;
+    overflow-y: auto;
   }
 
   img {

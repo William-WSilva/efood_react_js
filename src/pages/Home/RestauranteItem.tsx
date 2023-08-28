@@ -6,44 +6,43 @@ import variaveis from '../../styles/variaveis'
 import { BkRestaurante, RestauranteCardInfo, TituloNota } from './HomeStyle'
 
 type Props = {
-  title: string
-  nota: string
+  id: number
+  tipo: string
+  avaliacao: number
   descricao: string
-  category: string
   ResImg: string
+  title: string
 }
 
 export const RestauranteItem = ({
-  title,
+  id,
   descricao,
-  nota,
-  category,
-  ResImg
+  title,
+  avaliacao,
+  ResImg,
+  tipo
 }: Props) => {
   const navigate = useNavigate()
-  function restaurantInfos(title: string, category: string) {
-    navigate(`/perfil`, { state: { category, title } })
+  function restaurantInfos(id: number) {
+    navigate(`/perfil`, { state: { id } })
   }
 
   return (
     <>
       <div>
         <BkRestaurante ResImg={ResImg}>
-          <BtnTema color={variaveis.branco}>{category}</BtnTema>
+          <BtnTema color={variaveis.branco}>{tipo}</BtnTema>
         </BkRestaurante>
         <RestauranteCardInfo>
           <TituloNota>
             <TextMed>{title}</TextMed>
             <div>
-              <TextMed>{nota}</TextMed>
+              <TextMed>{avaliacao}</TextMed>
               <img src={estrela} alt="" />
             </div>
           </TituloNota>
           <TextPeq>{descricao}</TextPeq>
-          <BtnTema
-            color={variaveis.branco}
-            onClick={() => restaurantInfos(title, category)}
-          >
+          <BtnTema color={variaveis.branco} onClick={() => restaurantInfos(id)}>
             Saiba mais
           </BtnTema>
         </RestauranteCardInfo>

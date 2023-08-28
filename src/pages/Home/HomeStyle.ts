@@ -65,7 +65,8 @@ export const RestauranteCardInfo = styled.div`
   padding: 8px;
 
   h6 {
-    height: 100px;
+    height: 120px;
     padding: 8px 0;
+    overflow-y: auto;
   }
 `
