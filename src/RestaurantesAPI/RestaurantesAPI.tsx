@@ -1,10 +1,13 @@
+import { useDispatch } from 'react-redux'
+import { setRestaurantes } from '../store/reducers/restaurantesReducers'
 import React, {
   createContext,
   useContext,
-  useState,
   useEffect,
+  useState,
   ReactNode
 } from 'react'
+import { useGetFeaturedRestaurantesQuery } from '../services/api'
 
 export type Restaurantes = {
   id: number
@@ -26,26 +29,24 @@ export type CardapioItem = {
 }
 
 const RestaurantesContext = createContext<Restaurantes[]>([])
-
 export function useRestaurantes() {
   return useContext(RestaurantesContext)
 }
 
 export function RestaurantesProvider({ children }: { children: ReactNode }) {
-  const [restaurantes, setRestaurantes] = useState([])
+  const dispatch = useDispatch()
+  const { data } = useGetFeaturedRestaurantesQuery({})
 
   useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
-      .then((res) => res.json())
-      .then((res) => setRestaurantes(res))
-      .catch((error) => {
-        console.error('Error fetching restaurantes:', error)
-        setRestaurantes([])
-      })
-  }, [])
+    if (data) {
+      dispatch(setRestaurantes(data))
+    }
+  }, [data, dispatch])
+
+  const contextValue = data || []
 
   return (
-    <RestaurantesContext.Provider value={restaurantes}>
+    <RestaurantesContext.Provider value={contextValue}>
       {children}
     </RestaurantesContext.Provider>
   )
