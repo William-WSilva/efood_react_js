@@ -13,6 +13,8 @@ import {
   useRestaurantes
 } from '../../RestaurantesAPI/RestaurantesAPI'
 import { useState } from 'react'
+import { Cart } from '../../components/cart'
+import cartIcon from '../../images/cart.png'
 
 export const Perfil = () => {
   const location = useLocation()
@@ -21,6 +23,7 @@ export const Perfil = () => {
   const restaurantes = useRestaurantes()
   const [showModal, setShowModal] = useState(false)
   const [selectedPrato, setSelectedPrato] = useState<CardapioItem | null>(null)
+  const [isCartOpen, setIsCartOpen] = useState(false)
 
   const restauranteSelecionado = restaurantes.find(
     // buscar restaurante pelo id
@@ -47,6 +50,18 @@ export const Perfil = () => {
     setShowModal(false)
   }
 
+  // Formatando valor para moeda brasileira
+  const formataPreco = (preco: number) => {
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    }).format(preco)
+  }
+
+  const handleCartClick = () => {
+    setIsCartOpen(true)
+  }
+
   return (
     <>
       <Header style={{ display: 'flex', padding: '0 80px' }}>
@@ -62,7 +77,13 @@ export const Perfil = () => {
         </TextMed>
         <LogoeFood />
         <TextMed style={{ color: variaveis.vermelhoEscuro }}>
-          0 produto(s) no carrinho
+          {'Qtd itens Carrinho'} produto(s) no carrinho
+          <img
+            src={cartIcon}
+            style={{ width: '32px', cursor: 'pointer', marginLeft: '8px' }}
+            alt="cartIcon"
+            onClick={handleCartClick}
+          />
         </TextMed>
       </Header>
       <PBanner>
@@ -111,13 +132,14 @@ export const Perfil = () => {
                 color={variaveis.vermelhoEscuro}
                 fontSize={'14px'}
               >
-                {`Adicionar ao carrinho - ${selectedPrato.preco}`}
+                {`Adicionar ao carrinho - ${formataPreco(selectedPrato.preco)}`}
               </BtnTema>
             </div>
           </Modal>
         </BgModal>
       )}
       <Rodape />
+      <Cart isOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />
     </>
   )
 }
