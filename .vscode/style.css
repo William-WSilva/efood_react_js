@@ -1,11 +1,8 @@
-div{
-  position: fixed;
-  top: auto;
-  right: auto;
-  display: flex;
-  z-index: 1;
-  background-color: rgba(#000, 0.5);
-  flex-direction: column;
+div {
+  text-align: end;
+  position: absolute;
+  top: 0;
+  right: 0;
 
 
 }
