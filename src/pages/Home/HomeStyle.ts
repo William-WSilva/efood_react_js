@@ -7,24 +7,18 @@ type BkRestauranteProps = {
 }
 
 export const HRestaurantes = styled.section`
-  padding: 40px 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: ${variaveis.bgClaro};
 
-  h2 {
-    text-align: center;
-    margin-bottom: 40px;
-    width: 180px;
-    border-bottom: 2px solid ${variaveis.vermelhoEscuro};
-  }
-
   section {
+    margin-top: 80px;
+    width: 1024px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    gap: 48px 80px;
 
     @media (max-width: 768px) {
       grid-template-columns: 1fr;

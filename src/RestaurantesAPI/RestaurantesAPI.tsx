@@ -10,6 +10,9 @@ import React, {
 import { useGetFeaturedRestaurantesQuery } from '../services/api'
 
 export type Restaurantes = {
+  preco: any
+  nome: ReactNode
+  foto: string | undefined
   id: number
   titulo: string
   destacado: boolean

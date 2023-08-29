@@ -1,13 +1,11 @@
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { Header } from '../../components/Header/Header'
 import { LogoeFood } from '../../components/Logo/Logo'
 import { Rodape } from '../../components/Rodape/Rodape'
 import { TextMed, TextPeq } from '../../styles/styles'
 import variaveis from '../../styles/variaveis'
 import { BgModal, Modal, PBanner, PCardapio, PPrato } from './PerfilStyles'
-import { BtnNav as Link } from '../../components/BtnNav/BtnNavStyle'
 import { BtnTema } from '../../components/Botao/Botao'
-import restaurant from '../../images/restaurant.png'
 import {
   CardapioItem,
   useRestaurantes
@@ -15,6 +13,9 @@ import {
 import { useState } from 'react'
 import { Cart } from '../../components/cart'
 import cartIcon from '../../images/cart.png'
+import { addItemToCart } from '../../store/reducers/cartReducers'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../store'
 
 export const Perfil = () => {
   const location = useLocation()
@@ -22,8 +23,10 @@ export const Perfil = () => {
   const selectedRestaurantId = state?.id
   const restaurantes = useRestaurantes()
   const [showModal, setShowModal] = useState(false)
-  const [selectedPrato, setSelectedPrato] = useState<CardapioItem | null>(null)
+  const [selectedPrato, setSelectedPrato] = useState<CardapioItem | null>()
   const [isCartOpen, setIsCartOpen] = useState(false)
+  const dispatch = useDispatch()
+  const carrinhoItens = useSelector((state: RootState) => state.cart.items) // Correção aqui
 
   const restauranteSelecionado = restaurantes.find(
     // buscar restaurante pelo id
@@ -62,22 +65,29 @@ export const Perfil = () => {
     setIsCartOpen(true)
   }
 
+  const adicionarAoCarrinho = (selectedPrato: CardapioItem) => {
+    const itemExists = carrinhoItens.some(
+      (item) => item.id === selectedPrato.id
+    )
+    if (itemExists) {
+      alert('O item já existe no carrinho.')
+    } else {
+      dispatch(addItemToCart(selectedPrato))
+      closeModal()
+    }
+  }
+
   return (
     <>
-      <Header style={{ display: 'flex', padding: '0 80px' }}>
-        <Link to="/">
-          <img
-            src={restaurant}
-            alt="Icone Restaurantes"
-            title="Acessar Restaurantes"
-          />
-        </Link>
+      <Header style={{ display: 'flex', padding: '0 80px', height: '164px' }}>
         <TextMed style={{ color: variaveis.vermelhoEscuro }}>
           Restaurante
         </TextMed>
-        <LogoeFood />
+        <Link to="/">
+          <LogoeFood />
+        </Link>
         <TextMed style={{ color: variaveis.vermelhoEscuro }}>
-          {'Qtd itens Carrinho'} produto(s) no carrinho
+          {`${carrinhoItens.length} produto(s) no carrinho`}
           <img
             src={cartIcon}
             style={{ width: '32px', cursor: 'pointer', marginLeft: '8px' }}
@@ -131,6 +141,7 @@ export const Perfil = () => {
                 bkColor={variaveis.branco}
                 color={variaveis.vermelhoEscuro}
                 fontSize={'14px'}
+                onClick={() => adicionarAoCarrinho(selectedPrato)}
               >
                 {`Adicionar ao carrinho - ${formataPreco(selectedPrato.preco)}`}
               </BtnTema>

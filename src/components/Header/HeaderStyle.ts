@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import bkHeader from '../../images/Bk_Header.png'
 
 export const HeaderBanner = styled.header`
-  height: 180px;
+  height: 360px;
   background-image: url(${bkHeader});
   background-size: cover; // Ou o tamanho que você deseja
   padding: 16px;

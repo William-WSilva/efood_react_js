@@ -10,15 +10,14 @@ const initialState: RestaurantesInfos = {
 }
 
 const restaurantesSlice = createSlice({
-  name: 'restaurantes', // Nome correto do reducer
+  name: 'restaurantes',
   initialState,
   reducers: {
     setRestaurantes: (state, action: PayloadAction<Restaurantes[]>) => {
-      // Ação setRestaurantes para atualizar os restaurantes
       state.items = action.payload
     }
   }
 })
 
-export const { setRestaurantes } = restaurantesSlice.actions // Exporta a ação setRestaurantes
-export default restaurantesSlice.reducer // Exporta o reducer
+export const { setRestaurantes } = restaurantesSlice.actions
+export default restaurantesSlice.reducer

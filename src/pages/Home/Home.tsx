@@ -3,9 +3,7 @@ import { Rodape } from '../../components/Rodape/Rodape'
 import { HRestaurantes } from './HomeStyle'
 import { TextBig } from '../../styles/styles'
 import { LogoeFood } from '../../components/Logo/Logo'
-import { BtnNav as Link } from '../../components/BtnNav/BtnNavStyle'
 import { RestauranteItem } from './RestauranteItem'
-import pratos from '../../images/pratos.png'
 import { useRestaurantes } from '../../RestaurantesAPI/RestaurantesAPI'
 
 export const Home = () => {
@@ -15,15 +13,11 @@ export const Home = () => {
     <>
       <Header style={{ display: 'flex', flexDirection: 'column' }}>
         <LogoeFood />
-        <TextBig style={{ textAlign: 'center' }}>
+        <TextBig style={{ textAlign: 'center', marginBottom: '40px' }}>
           Viva experiências gastronômicas <br /> no conforto da sua casa
         </TextBig>
-        {/* <Link to={'/perfil'}>
-          <img src={pratos} alt="Foto Pratos" />
-        </Link> */}
       </Header>
       <HRestaurantes>
-        <TextBig>Retaurantes</TextBig>
         <section>
           {restaurantes.map((restaurante) => (
             <RestauranteItem

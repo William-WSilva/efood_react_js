@@ -4,13 +4,14 @@ import pratoBanner from '../../images/pratoBanner3.jpeg'
 import close from '../../images/close.png'
 
 export const PCardapio = styled.section`
-  padding: 80px;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   background-color: ${variaveis.bgClaro};
 
   section {
+    width: 1024px;
+    margin-top: 56px;
+    margin-bottom: 120px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 32px;
@@ -40,7 +41,7 @@ export const PPrato = styled.div`
   }
 
   img {
-    height: 250px;
+    height: 167px;
     width: 100%;
   }
 `
