@@ -9,7 +9,7 @@ export const EstiloGlobal = createGlobalStyle`
     font-family: Roboto, sans-serif;
     font-weight: normal;
     box-sizing: border-box;
-    border: 1px solid gray;
+    // border: 1px solid gray;
   }
 `
 export const TextBig = styled.h2`
