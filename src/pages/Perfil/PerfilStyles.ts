@@ -3,6 +3,13 @@ import variaveis from '../../styles/variaveis'
 import pratoBanner from '../../images/pratoBanner3.jpeg'
 import close from '../../images/close.png'
 
+export const Container = styled.section`
+  width: 1024px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+
 export const PCardapio = styled.section`
   display: flex;
   justify-content: center;
@@ -54,11 +61,11 @@ export const PBanner = styled.section`
   color: ${variaveis.branco};
 
   div {
-    padding: 32px 80px;
+    width: 1024px;
+    padding-top: 24px;
+    padding-bottom: 32px;
     display: flex;
-    justify-content: space-between;
-    align-items: start;
-    flex-direction: column;
+    justify-content: center;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
@@ -83,8 +90,8 @@ export const Modal = styled.div`
   background-color: ${variaveis.vermelhoEscuro};
   padding: 32px;
   display: flex;
-  width: 960px;
-  height: 380px;
+  width: 1024px;
+  height: 344px;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -118,8 +125,8 @@ export const Modal = styled.div`
   }
 
   img {
-    height: 100%;
-    width: 40%;
+    height: 280px;
+    width: 280px;
     margin-right: 16px;
 
     @media (max-width: 768px) {

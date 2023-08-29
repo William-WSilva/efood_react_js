@@ -4,7 +4,14 @@ import { LogoeFood } from '../../components/Logo/Logo'
 import { Rodape } from '../../components/Rodape/Rodape'
 import { TextMed, TextPeq } from '../../styles/styles'
 import variaveis from '../../styles/variaveis'
-import { BgModal, Modal, PBanner, PCardapio, PPrato } from './PerfilStyles'
+import {
+  BgModal,
+  Container,
+  Modal,
+  PBanner,
+  PCardapio,
+  PPrato
+} from './PerfilStyles'
 import { BtnTema } from '../../components/Botao/Botao'
 import {
   CardapioItem,
@@ -74,32 +81,55 @@ export const Perfil = () => {
     } else {
       dispatch(addItemToCart(selectedPrato))
       closeModal()
+      handleCartClick()
     }
   }
 
   return (
     <>
-      <Header style={{ display: 'flex', padding: '0 80px', height: '164px' }}>
-        <TextMed style={{ color: variaveis.vermelhoEscuro }}>
-          Restaurante
-        </TextMed>
-        <Link to="/">
-          <LogoeFood />
-        </Link>
-        <TextMed style={{ color: variaveis.vermelhoEscuro }}>
-          {`${carrinhoItens.length} produto(s) no carrinho`}
-          <img
-            src={cartIcon}
-            style={{ width: '32px', cursor: 'pointer', marginLeft: '8px' }}
-            alt="cartIcon"
-            onClick={handleCartClick}
-          />
-        </TextMed>
+      <Header
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          height: '164px'
+        }}
+      >
+        <Container>
+          <TextMed style={{ color: variaveis.vermelhoEscuro }}>
+            Restaurante
+          </TextMed>
+          <Link to="/">
+            <LogoeFood />
+          </Link>
+          <TextMed
+            style={{
+              color: variaveis.vermelhoEscuro,
+              display: 'flex',
+              alignItems: 'center'
+            }}
+          >
+            {`${carrinhoItens.length} produto(s) no carrinho`}
+            <img
+              src={cartIcon}
+              style={{ width: '32px', cursor: 'pointer', marginLeft: '8px' }}
+              alt="cartIcon"
+              onClick={handleCartClick}
+            />
+          </TextMed>
+        </Container>
       </Header>
       <PBanner>
         <div>
-          <span>{primMaiuscula(restauranteSelecionado?.tipo as string)}</span>
-          <span>{restauranteSelecionado?.titulo}</span>
+          <Container
+            style={{
+              flexDirection: 'column',
+              height: '100%',
+              alignItems: 'start'
+            }}
+          >
+            <span>{primMaiuscula(restauranteSelecionado?.tipo as string)}</span>
+            <span>{restauranteSelecionado?.titulo}</span>
+          </Container>
         </div>
       </PBanner>
       <PCardapio>

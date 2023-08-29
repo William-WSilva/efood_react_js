@@ -22,6 +22,14 @@ type Props = {
   setIsCartOpen: (isOpen: boolean) => void
 }
 
+// Formatando valor para moeda brasileira
+const formataPreco = (preco: number) => {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(preco)
+}
+
 export const Cart = ({ isOpen, setIsCartOpen }: Props) => {
   const carrinhoItens = useSelector((state: RootState) => state.cart.items)
   const dispatch = useDispatch()
@@ -48,7 +56,7 @@ export const Cart = ({ isOpen, setIsCartOpen }: Props) => {
               <img src={item.foto} alt="" />
               <div>
                 <TextMed>{item.nome}</TextMed>
-                <TextPeq>R$ {item.preco}</TextPeq>
+                <TextPeq>{formataPreco(item.preco)}</TextPeq>
               </div>
               <ExcluirItemCarrinho
                 onClick={() => excluirItemDoCarrinho(item.id)}
@@ -63,7 +71,7 @@ export const Cart = ({ isOpen, setIsCartOpen }: Props) => {
             Valor Total
           </TextPeq>
           <TextPeq style={{ color: '#fff', fontWeight: 'bold' }}>
-            R$ {valorTotal}
+            {formataPreco(valorTotal)}
           </TextPeq>
         </TotalCarrinho>
         <BtnTema
