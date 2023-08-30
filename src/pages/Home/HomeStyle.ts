@@ -15,6 +15,7 @@ export const HRestaurantes = styled.section`
 
   section {
     margin-top: 80px;
+    margin-bottom: 120px;
     width: 1024px;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -62,5 +63,12 @@ export const RestauranteCardInfo = styled.div`
     height: 120px;
     padding: 8px 0;
     overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: ${variaveis.vermelhoEscuro};
+    }
   }
 `

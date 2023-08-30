@@ -12,8 +12,8 @@ export const Botao = styled.button<ButtonProps>`
   background-color: ${({ bkColor }) => bkColor || variaveis.vermelhoEscuro};
   color: ${({ color }) => color || variaveis.vermelhoEscuro};
   font-size: ${({ fontSize }) => fontSize || '12px'};
-  width: ${({ width }) => width || 'auto'};
-  height: 30px;
+  width: ${({ width }) => width || '82px'};
+  height: 24px;
   padding: 0 4px;
   font-weight: bold;
   cursor: pointer;

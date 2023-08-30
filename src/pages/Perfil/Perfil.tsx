@@ -91,12 +91,12 @@ export const Perfil = () => {
         style={{
           display: 'flex',
           justifyContent: 'center',
-          height: '164px'
+          height: 164
         }}
       >
         <Container>
-          <TextMed style={{ color: variaveis.vermelhoEscuro }}>
-            Restaurante
+          <TextMed style={{ color: variaveis.vermelhoEscuro, width: 240 }}>
+            Restaurantes
           </TextMed>
           <Link to="/">
             <LogoeFood />
@@ -111,7 +111,7 @@ export const Perfil = () => {
             {`${carrinhoItens.length} produto(s) no carrinho`}
             <img
               src={cartIcon}
-              style={{ width: '32px', cursor: 'pointer', marginLeft: '8px' }}
+              style={{ width: 32, cursor: 'pointer', marginLeft: 8 }}
               alt="cartIcon"
               onClick={handleCartClick}
             />
@@ -127,8 +127,24 @@ export const Perfil = () => {
               alignItems: 'start'
             }}
           >
-            <span>{primMaiuscula(restauranteSelecionado?.tipo as string)}</span>
-            <span>{restauranteSelecionado?.titulo}</span>
+            <span
+              style={{
+                fontFamily: 'Roboto, sans-serif',
+                fontWeight: 100,
+                fontSize: 32
+              }}
+            >
+              {primMaiuscula(restauranteSelecionado?.tipo as string)}
+            </span>
+            <span
+              style={{
+                fontFamily: 'Roboto, sans-serif',
+                fontWeight: 900,
+                fontSize: 32
+              }}
+            >
+              {restauranteSelecionado?.titulo}
+            </span>
           </Container>
         </div>
       </PBanner>
@@ -137,7 +153,7 @@ export const Perfil = () => {
           {selectedCardapio.map((prato) => (
             <PPrato key={prato.id}>
               <img src={prato.foto} alt="" />
-              <TextMed>{prato.nome}</TextMed>
+              <TextMed style={{ fontSize: 16 }}>{prato.nome}</TextMed>
               <TextPeq>{prato.descricao}</TextPeq>
               <BtnTema
                 width={'100%'}

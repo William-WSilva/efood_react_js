@@ -26,7 +26,7 @@ export const CartContainer = styled.div<CartContainer>`
 `
 export const Sidebar = styled.aside`
   background-color: ${variaveis.vermelhoEscuro};
-  width: 400px;
+  width: 360px;
   padding: 40px 8px;
   z-index: 1;
 
@@ -52,13 +52,13 @@ export const CloseSidebar = styled.div`
 export const ItemCarrinho = styled.li`
   background-color: ${variaveis.vermelhoClaro};
   display: grid;
-  grid-template-columns: 1fr 2fr 32px;
+  grid-template-columns: 80px 3fr 32px;
   column-gap: 8px;
   padding: 8px;
   margin-bottom: 16px;
 
   img {
-    width: 100%;
+    width: 80px;
     height: 80px;
     object-fit: cover;
   }
@@ -74,8 +74,8 @@ export const ExcluirItemCarrinho = styled.div`
   justify-content: end;
   cursor: pointer;
   img {
-    width: 28px;
-    height: 28px;
+    width: 24px;
+    height: 24px;
     object-fit: cover;
   }
 `

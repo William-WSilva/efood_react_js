@@ -35,7 +35,9 @@ export const RestauranteItem = ({
         <BkRestaurante ResImg={ResImg}>
           {destacado && (
             <span style={{ marginRight: '8px' }}>
-              <BtnTema color={variaveis.branco}>Destaque da semana</BtnTema>
+              <BtnTema color={variaveis.branco} width="auto">
+                Destaque da semana
+              </BtnTema>
             </span>
           )}
           <BtnTema color={variaveis.branco}>{tipo}</BtnTema>

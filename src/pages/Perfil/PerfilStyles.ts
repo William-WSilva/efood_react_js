@@ -35,9 +35,12 @@ export const PCardapio = styled.section`
 export const PPrato = styled.div`
   background-color: ${variaveis.vermelhoEscuro};
   padding: 8px;
+  border-radius: 8px;
 
   h3 {
     color: ${variaveis.branco};
+    fontfamily: 'Roboto, sans-serif';
+    font-weight: 900;
   }
 
   h6 {
@@ -45,11 +48,19 @@ export const PPrato = styled.div`
     height: 120px;
     padding: 8px 0;
     overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 2px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: ${variaveis.branco};
+    }
   }
 
   img {
     height: 167px;
     width: 100%;
+    border-radius: 8px;
   }
 `
 
@@ -105,6 +116,11 @@ export const Modal = styled.div`
 
   div {
     width: 100%;
+
+    h3 {
+      fontfamily: 'Roboto, sans-serif';
+      font-weight: 900;
+    }
 
     h6 {
       margin: 16px 0;
