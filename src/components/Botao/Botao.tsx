@@ -7,6 +7,7 @@ type Props = {
   width?: string
   fontSize?: string
   margin?: string
+  type?: 'submit' | 'button'
   onClick?: () => void
 }
 
@@ -17,6 +18,7 @@ export const BtnTema = ({
   width,
   fontSize,
   margin,
+  type = 'button',
   onClick
 }: Props) => {
   function handleClick() {
@@ -27,6 +29,7 @@ export const BtnTema = ({
 
   return (
     <Botao
+      type={type}
       bkColor={bkColor}
       color={color}
       onClick={handleClick}

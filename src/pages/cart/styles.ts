@@ -43,3 +43,6 @@ export const TotalCarrinho = styled.div`
   margin: 16px 0;
   font-weight: bold;
 `
+export const InputGroup = styled.div`
+  margin-bottom: 8px;
+`

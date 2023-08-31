@@ -24,7 +24,7 @@ import { addItemToCart } from '../../store/reducers/cartReducers'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../store'
 import { formataPreco } from '../../utils'
-import { DeliveryDetails } from '../cart/deliveryDetails/deliveryDetails'
+import { DeliveryDetails } from '../cart/deliveryDetails'
 import { Payment } from '../cart/Payment'
 import { FinishPayment } from '../cart/FinishPayment'
 
