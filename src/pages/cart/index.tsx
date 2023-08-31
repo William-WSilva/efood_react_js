@@ -1,36 +1,27 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux' // Importe o useSelector do Redux
+import { CartContainer } from '../../components/CartContainer'
 import {
-  Overlay,
-  CartContainer,
-  Sidebar,
   ItemCarrinho,
   TotalCarrinho,
-  CloseSidebar,
-  ExcluirItemCarrinho
+  ExcluirItemCarrinho,
+  ListaCarrinho
 } from './styles'
 import excluir from '../../images/excluir.png'
-import fechar from '../../images/close.png'
 import { RootState } from '../../store' // Importe o RootState para acessar o estado do Redux
 import variaveis from '../../styles/variaveis'
 import { TextMed, TextPeq } from '../../styles/styles'
-import { BtnTema } from '../Botao/Botao'
+import { BtnTema } from '../../components/Botao/Botao'
 import { removeItemFromCart } from '../../store/reducers/cartReducers'
+import { formataPreco } from '../../utils'
 
 type Props = {
   isOpen: boolean
   setIsCartOpen: (isOpen: boolean) => void
+  handleCartChange: (CurrentCart: string) => void
 }
 
-// Formatando valor para moeda brasileira
-const formataPreco = (preco: number) => {
-  return new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL'
-  }).format(preco)
-}
-
-export const Cart = ({ isOpen, setIsCartOpen }: Props) => {
+export const Cart = ({ isOpen, setIsCartOpen, handleCartChange }: Props) => {
   const carrinhoItens = useSelector((state: RootState) => state.cart.items)
   const dispatch = useDispatch()
 
@@ -44,13 +35,9 @@ export const Cart = ({ isOpen, setIsCartOpen }: Props) => {
   }
 
   return (
-    <CartContainer isOpen={isOpen}>
-      <Overlay />
-      <Sidebar>
-        <CloseSidebar>
-          <img src={fechar} alt="" onClick={() => setIsCartOpen(false)} />
-        </CloseSidebar>
-        <ul>
+    <CartContainer isOpen={isOpen} setIsCartOpen={setIsCartOpen}>
+      <>
+        <ListaCarrinho>
           {carrinhoItens.map((item) => (
             <ItemCarrinho key={item.id}>
               <img src={item.foto} alt="" />
@@ -65,7 +52,7 @@ export const Cart = ({ isOpen, setIsCartOpen }: Props) => {
               </ExcluirItemCarrinho>
             </ItemCarrinho>
           ))}
-        </ul>
+        </ListaCarrinho>
         <TotalCarrinho>
           <TextPeq style={{ color: '#fff', fontWeight: 'bold' }}>
             Valor Total
@@ -75,14 +62,16 @@ export const Cart = ({ isOpen, setIsCartOpen }: Props) => {
           </TextPeq>
         </TotalCarrinho>
         <BtnTema
+          margin="8px 0 0 0"
           width={'100%'}
           color={variaveis.vermelhoEscuro}
           bkColor={variaveis.branco}
           fontSize="14px"
+          onClick={() => handleCartChange('DeliveryDetails')}
         >
           Continuar com a entrega
         </BtnTema>
-      </Sidebar>
+      </>
     </CartContainer>
   )
 }

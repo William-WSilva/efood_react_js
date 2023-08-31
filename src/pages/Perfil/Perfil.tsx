@@ -18,11 +18,15 @@ import {
   useRestaurantes
 } from '../../RestaurantesAPI/RestaurantesAPI'
 import { useState } from 'react'
-import { Cart } from '../../components/cart'
+import { Cart } from '../cart'
 import cartIcon from '../../images/cart.png'
 import { addItemToCart } from '../../store/reducers/cartReducers'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../store'
+import { formataPreco } from '../../utils'
+import { DeliveryDetails } from '../cart/deliveryDetails/deliveryDetails'
+import { Payment } from '../cart/Payment'
+import { FinishPayment } from '../cart/FinishPayment'
 
 export const Perfil = () => {
   const location = useLocation()
@@ -32,8 +36,9 @@ export const Perfil = () => {
   const [showModal, setShowModal] = useState(false)
   const [selectedPrato, setSelectedPrato] = useState<CardapioItem | null>()
   const [isCartOpen, setIsCartOpen] = useState(false)
+  const [currentCart, setCurrentCart] = useState('')
   const dispatch = useDispatch()
-  const carrinhoItens = useSelector((state: RootState) => state.cart.items) // Correção aqui
+  const carrinhoItens = useSelector((state: RootState) => state.cart.items) // Itens do carrinho
 
   const restauranteSelecionado = restaurantes.find(
     // buscar restaurante pelo id
@@ -54,35 +59,34 @@ export const Perfil = () => {
     setShowModal(true)
   }
 
+  // fechar Modal prato
   const closeModal = () => {
-    // fechar Modal prato
     setSelectedPrato(null)
     setShowModal(false)
   }
 
-  // Formatando valor para moeda brasileira
-  const formataPreco = (preco: number) => {
-    return new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL'
-    }).format(preco)
+  const adicionarAoCarrinho = (selectedPrato: CardapioItem) => {
+    // const itemExists = carrinhoItens.some(
+    //   (item) => item.id === selectedPrato.id
+    // )
+    // if (itemExists) {
+    //   alert('O item já existe no carrinho.')
+    // } else {
+    // } // Verificar se Prato já existe no carrinho
+    dispatch(addItemToCart(selectedPrato))
+    closeModal()
+    handleCartClick()
+    setCurrentCart('cartItens')
   }
 
+  // Abrir Carrinho
   const handleCartClick = () => {
     setIsCartOpen(true)
+    setCurrentCart('cartItens')
   }
-
-  const adicionarAoCarrinho = (selectedPrato: CardapioItem) => {
-    const itemExists = carrinhoItens.some(
-      (item) => item.id === selectedPrato.id
-    )
-    if (itemExists) {
-      alert('O item já existe no carrinho.')
-    } else {
-      dispatch(addItemToCart(selectedPrato))
-      closeModal()
-      handleCartClick()
-    }
+  // Navegar entre layouts do carrinho
+  const handleCartChange = (CurrentCart: string) => {
+    setCurrentCart(CurrentCart)
   }
 
   return (
@@ -196,7 +200,35 @@ export const Perfil = () => {
         </BgModal>
       )}
       <Rodape />
-      <Cart isOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />
+
+      {currentCart === 'cartItens' && (
+        <Cart
+          isOpen={isCartOpen}
+          setIsCartOpen={setIsCartOpen}
+          handleCartChange={handleCartChange}
+        />
+      )}
+      {currentCart === 'DeliveryDetails' && (
+        <DeliveryDetails
+          isOpen={isCartOpen}
+          setIsCartOpen={setIsCartOpen}
+          handleCartChange={handleCartChange}
+        />
+      )}
+      {currentCart === 'Payment' && (
+        <Payment
+          isOpen={isCartOpen}
+          setIsCartOpen={setIsCartOpen}
+          handleCartChange={handleCartChange}
+        />
+      )}
+      {currentCart === 'FinishPayment' && (
+        <FinishPayment
+          isOpen={isCartOpen}
+          setIsCartOpen={setIsCartOpen}
+          onClick={() => setIsCartOpen(false)}
+        />
+      )}
     </>
   )
 }

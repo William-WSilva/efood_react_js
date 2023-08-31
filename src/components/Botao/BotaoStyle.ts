@@ -5,7 +5,8 @@ type ButtonProps = {
   fontSize?: string
   bkColor?: string
   color?: string
-  width?: string // Adicione a prop fullWidth
+  width?: string
+  margin?: string
 }
 
 export const Botao = styled.button<ButtonProps>`
@@ -13,6 +14,7 @@ export const Botao = styled.button<ButtonProps>`
   color: ${({ color }) => color || variaveis.vermelhoEscuro};
   font-size: ${({ fontSize }) => fontSize || '12px'};
   width: ${({ width }) => width || '82px'};
+  margin: ${({ margin }) => margin || '0px'};
   height: 24px;
   padding: 0 4px;
   font-weight: bold;

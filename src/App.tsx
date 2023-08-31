@@ -5,7 +5,7 @@ import { Home } from './pages/Home/Home'
 import { Perfil } from './pages/Perfil/Perfil'
 import { RestaurantesProvider } from './RestaurantesAPI/RestaurantesAPI' // Importar o Provider
 import { store } from './store'
-import { Cart } from './components/cart'
+import { Cart } from './pages/cart'
 
 const rotas = createBrowserRouter([
   {

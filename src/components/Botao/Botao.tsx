@@ -6,6 +6,7 @@ type Props = {
   color?: string
   width?: string
   fontSize?: string
+  margin?: string
   onClick?: () => void
 }
 
@@ -15,6 +16,7 @@ export const BtnTema = ({
   color,
   width,
   fontSize,
+  margin,
   onClick
 }: Props) => {
   function handleClick() {
@@ -30,6 +32,7 @@ export const BtnTema = ({
       onClick={handleClick}
       width={width}
       fontSize={fontSize}
+      margin={margin}
     >
       {children}
     </Botao>

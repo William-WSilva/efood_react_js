@@ -3,7 +3,7 @@ import variaveis from '../../styles/variaveis'
 
 export const Footer = styled.footer`
   height: 298px;
-  background-color: ${variaveis.vermelhoClaro};
+  background-color: ${variaveis.brancoTema};
   padding: 40px;
   display: flex;
   flex-direction: column;
