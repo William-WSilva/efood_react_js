@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import variaveis from '../../styles/variaveis'
-import { Link } from 'react-router-dom'
 
 type BkRestauranteProps = {
   ResImg: string
@@ -58,14 +57,17 @@ export const RestauranteCardInfo = styled.div`
   border: 1px solid ${variaveis.vermelhoEscuro};
   border-top: 1px solid transparent;
   padding: 8px;
+  background-color: ${variaveis.branco};
 
   h6 {
-    height: 120px;
-    padding: 8px 0;
+    height: 88px;
+    padding: 4px 0;
     overflow-y: auto;
+    line-height: 22px;
+    margin: 16px 0;
 
     &::-webkit-scrollbar {
-      width: 4px;
+      width: 2px;
     }
     &::-webkit-scrollbar-thumb {
       background-color: ${variaveis.vermelhoEscuro};

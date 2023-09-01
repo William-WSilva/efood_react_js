@@ -134,9 +134,10 @@ export const FormDelivery = ({
             <>
               <TextMed
                 style={{
-                  color: variaveis.branco,
+                  color: variaveis.brancoTema,
                   fontWeight: 'bold',
-                  marginBottom: 16
+                  marginBottom: 16,
+                  fontSize: 16
                 }}
               >
                 Entrega
@@ -265,9 +266,10 @@ export const FormDelivery = ({
             <>
               <TextMed
                 style={{
-                  color: variaveis.branco,
+                  color: variaveis.brancoTema,
                   fontWeight: 'bold',
-                  marginBottom: 16
+                  marginBottom: 16,
+                  fontSize: 16
                 }}
               >
                 Pagamento - Valor a pagar {formataPreco(valorTotal)}
@@ -392,33 +394,34 @@ export const FormDelivery = ({
           <>
             <TextMed
               style={{
-                color: variaveis.branco,
+                color: variaveis.brancoTema,
                 fontWeight: 'bold',
-                marginBottom: 16
+                marginBottom: 16,
+                fontSize: 16
               }}
             >
               Pedido realizado - {data.orderId}
             </TextMed>
-            <FrmParagrafo style={{ color: variaveis.branco }}>
+            <FrmParagrafo>
               Estamos felizes em informar que seu pedido já está em processo de
               preparação e, em breve, será entregue no endereço fornecido.
             </FrmParagrafo>
             <br />
 
-            <FrmParagrafo style={{ color: variaveis.branco }}>
+            <FrmParagrafo>
               Gostaríamos de ressaltar que nossos entregadores não estão
               autorizados a realizar cobranças extras.{' '}
             </FrmParagrafo>
             <br />
 
-            <FrmParagrafo style={{ color: variaveis.branco }}>
+            <FrmParagrafo>
               Lembre-se da importância de higienizar as mãos após o recebimento
               do pedido, garantindo assim sua segurança e bem-estar durante a
               refeição.
             </FrmParagrafo>
             <br />
 
-            <FrmParagrafo style={{ color: variaveis.branco }}>
+            <FrmParagrafo>
               Esperamos que desfrute de uma deliciosa e agradável experiência
               gastronômica. Bom apetite!
             </FrmParagrafo>

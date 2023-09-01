@@ -4,6 +4,7 @@ import estrela from '../../images/star.png'
 import { BtnTema } from '../../components/Botao/Botao'
 import variaveis from '../../styles/variaveis'
 import { BkRestaurante, RestauranteCardInfo, TituloNota } from './HomeStyle'
+import { primMaiuscula } from '../../utils'
 
 type Props = {
   id: number
@@ -35,12 +36,12 @@ export const RestauranteItem = ({
         <BkRestaurante ResImg={ResImg}>
           {destacado && (
             <span style={{ marginRight: '8px' }}>
-              <BtnTema color={variaveis.branco} width="auto">
+              <BtnTema color={variaveis.brancoTema} width="auto">
                 Destaque da semana
               </BtnTema>
             </span>
           )}
-          <BtnTema color={variaveis.branco}>{tipo}</BtnTema>
+          <BtnTema color={variaveis.brancoTema}>{primMaiuscula(tipo)}</BtnTema>
         </BkRestaurante>
         <RestauranteCardInfo>
           <TituloNota>
@@ -51,7 +52,11 @@ export const RestauranteItem = ({
             </div>
           </TituloNota>
           <TextPeq>{descricao}</TextPeq>
-          <BtnTema color={variaveis.branco} onClick={() => restaurantInfos(id)}>
+          <BtnTema
+            color={variaveis.brancoTema}
+            fontSize="14px"
+            onClick={() => restaurantInfos(id)}
+          >
             Saiba mais
           </BtnTema>
         </RestauranteCardInfo>

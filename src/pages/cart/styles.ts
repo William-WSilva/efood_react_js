@@ -4,9 +4,17 @@ import variaveis from '../../styles/variaveis'
 export const ListaCarrinho = styled.ul`
   max-height: 80vh;
   overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 2px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: ${variaveis.branco};
+  }
 `
 
 export const ItemCarrinho = styled.li`
+  height: 100px;
   background-color: ${variaveis.brancoTema};
   display: grid;
   grid-template-columns: 80px 3fr 16px;
@@ -22,6 +30,11 @@ export const ItemCarrinho = styled.li`
 
   h3 {
     margin-bottom: 16px;
+    font-weight: 900;
+  }
+
+  h6 {
+    line-height: 22px;
   }
 `
 
@@ -40,7 +53,7 @@ export const ExcluirItemCarrinho = styled.div`
 export const TotalCarrinho = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 16px 0;
+  margin-top: 24px;
   font-weight: bold;
 `
 export const InputGroup = styled.div`

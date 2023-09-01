@@ -23,7 +23,7 @@ import cartIcon from '../../images/cart.png'
 import { addItemToCart } from '../../store/reducers/cartReducers'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../store'
-import { formataPreco } from '../../utils'
+import { formataPreco, primMaiuscula } from '../../utils'
 import { FormDelivery } from '../cart/FormDelivery'
 
 export const Perfil = () => {
@@ -43,13 +43,6 @@ export const Perfil = () => {
     (restaurante) => restaurante.id === selectedRestaurantId
   )
   const selectedCardapio = restauranteSelecionado?.cardapio || []
-  function primMaiuscula(str: string) {
-    // primeira letra Tipo restaurate em Maiuscula
-    if (typeof str !== 'string' || str.length === 0) {
-      return str
-    }
-    return str.charAt(0).toUpperCase() + str.slice(1)
-  }
 
   const openModal = (prato: CardapioItem) => {
     // Abrir Modal prato
@@ -64,16 +57,16 @@ export const Perfil = () => {
   }
 
   const adicionarAoCarrinho = (selectedPrato: CardapioItem) => {
-    const itemExists = carrinhoItens.some(
-      (item) => item.id === selectedPrato.id
-    )
-    if (itemExists) {
-      alert('O item já existe no carrinho.')
-    } else {
-      dispatch(addItemToCart(selectedPrato))
-      closeModal()
-      handleCartClick()
-    }
+    // const itemExists = carrinhoItens.some(
+    //   (item) => item.id === selectedPrato.id
+    // )
+    // if (itemExists) {
+    //   alert('O item já existe no carrinho.')
+    // } else {
+    // }
+    dispatch(addItemToCart(selectedPrato))
+    closeModal()
+    handleCartClick()
     setCurrentCart('cartItens')
   }
 
@@ -87,11 +80,6 @@ export const Perfil = () => {
     setCurrentCart(CurrentCart)
   }
 
-  const valorTotal = carrinhoItens.reduce(
-    (total, item) => total + item.preco,
-    0
-  )
-
   return (
     <>
       <Header
@@ -102,7 +90,13 @@ export const Perfil = () => {
         }}
       >
         <Container>
-          <TextMed style={{ color: variaveis.vermelhoEscuro, width: 240 }}>
+          <TextMed
+            style={{
+              color: variaveis.vermelhoEscuro,
+              width: 240,
+              fontWeight: 900
+            }}
+          >
             Restaurantes
           </TextMed>
           <Link to="/">
@@ -112,7 +106,8 @@ export const Perfil = () => {
             style={{
               color: variaveis.vermelhoEscuro,
               display: 'flex',
-              alignItems: 'center'
+              alignItems: 'center',
+              fontWeight: 900
             }}
           >
             {`${carrinhoItens.length} produto(s) no carrinho`}
@@ -160,11 +155,15 @@ export const Perfil = () => {
           {selectedCardapio.map((prato) => (
             <PPrato key={prato.id}>
               <img src={prato.foto} alt="" />
-              <TextMed style={{ fontSize: 16 }}>{prato.nome}</TextMed>
-              <TextPeq>{prato.descricao}</TextPeq>
+              <TextMed style={{ color: variaveis.brancoTema }}>
+                {prato.nome}
+              </TextMed>
+              <TextPeq style={{ color: variaveis.brancoTema }}>
+                {prato.descricao}
+              </TextPeq>
               <BtnTema
                 width={'100%'}
-                bkColor={variaveis.branco}
+                bkColor={variaveis.brancoTema}
                 color={variaveis.vermelhoEscuro}
                 fontSize={'14px'}
                 onClick={() => openModal(prato)}

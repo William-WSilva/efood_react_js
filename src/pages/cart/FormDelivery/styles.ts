@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import variaveis from '../../../styles/variaveis'
 
 export const Label = styled.label`
-  color: ${variaveis.branco};
+  color: ${variaveis.brancoTema};
   font-weight: bold;
   font-size: 14px;
   margin-bottom: 8px;
@@ -36,6 +36,7 @@ export const DivMesAno = styled.div`
   column-gap: 34px;
 `
 export const FrmParagrafo = styled.p`
-  color: ${variaveis.branco};
+  color: ${variaveis.brancoTema};
   line-height: 22px;
+  font-size: 14px;
 `

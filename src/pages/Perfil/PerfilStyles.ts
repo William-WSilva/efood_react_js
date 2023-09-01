@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import variaveis from '../../styles/variaveis'
-import pratoBanner from '../../images/pratoBanner3.jpeg'
+import pratoBanner from '../../images/pratoBanner.png'
 import close from '../../images/close.png'
 
 export const Container = styled.section`
@@ -39,15 +39,18 @@ export const PPrato = styled.div`
 
   h3 {
     color: ${variaveis.branco};
-    fontfamily: 'Roboto, sans-serif';
     font-weight: 900;
+    font-size: 16px;
+    margin-top: 8px;
   }
 
   h6 {
     color: ${variaveis.branco};
-    height: 120px;
+    height: 88px;
     padding: 8px 0;
     overflow-y: auto;
+    line-height: 22px;
+    margin: 8px 0;
 
     &::-webkit-scrollbar {
       width: 2px;
@@ -124,6 +127,7 @@ export const Modal = styled.div`
 
     h6 {
       margin: 16px 0;
+      line-height: 22px;
     }
   }
 
@@ -131,9 +135,8 @@ export const Modal = styled.div`
     background-image: url(${close});
     background-size: cover;
     background-repeat: no-repeat;
-    height: 24px;
-    width: 24px;
-    border: 1px solid ${variaveis.branco};
+    height: 16px;
+    width: 16px;
     cursor: pointer;
     position: absolute;
     top: 8px;
@@ -143,7 +146,7 @@ export const Modal = styled.div`
   img {
     height: 280px;
     width: 280px;
-    margin-right: 16px;
+    margin-right: 24px;
 
     @media (max-width: 768px) {
       width: 100%;

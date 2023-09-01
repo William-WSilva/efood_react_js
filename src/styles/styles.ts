@@ -15,7 +15,7 @@ export const EstiloGlobal = createGlobalStyle`
 export const TextBig = styled.h2`
   color: ${variaveis.vermelhoEscuro};
   font-size: 36px;
-  font-weight: bold;
+  font-weight: 900;
 
   @media (max-width: 768px) {
     font-size: 18px;

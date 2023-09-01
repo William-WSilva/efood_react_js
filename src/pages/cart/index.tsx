@@ -54,15 +54,15 @@ export const Cart = ({ isOpen, setIsCartOpen, handleCartChange }: Props) => {
           ))}
         </ListaCarrinho>
         <TotalCarrinho>
-          <TextPeq style={{ color: '#fff', fontWeight: 'bold' }}>
+          <TextPeq style={{ color: variaveis.brancoTema, fontWeight: 'bold' }}>
             Valor Total
           </TextPeq>
-          <TextPeq style={{ color: '#fff', fontWeight: 'bold' }}>
+          <TextPeq style={{ color: variaveis.brancoTema, fontWeight: 'bold' }}>
             {formataPreco(valorTotal)}
           </TextPeq>
         </TotalCarrinho>
         <BtnTema
-          margin="8px 0 0 0"
+          margin="16px 0 0 0"
           width={'100%'}
           color={variaveis.vermelhoEscuro}
           bkColor={variaveis.branco}

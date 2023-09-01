@@ -27,7 +27,7 @@ export const CartContainers = styled.div<CartContainer>`
 export const Sidebar = styled.aside`
   background-color: ${variaveis.vermelhoEscuro};
   width: 360px;
-  padding: 40px 8px;
+  padding: 32px 8px;
   z-index: 1;
 `
 export const CloseSidebar = styled.div`
@@ -39,8 +39,7 @@ export const CloseSidebar = styled.div`
   cursor: pointer;
 
   img {
-    border: 1px solid ${variaveis.branco};
-    width: 24px;
+    width: 16px;
     object-fit: cover;
   }
 `
