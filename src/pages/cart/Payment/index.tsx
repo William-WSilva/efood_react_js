@@ -167,16 +167,6 @@ export const Payment = ({ isOpen, setIsCartOpen, handleCartChange }: Props) => {
         </form>
 
         <BtnTema
-          margin="16px 0 0 0"
-          width={'100%'}
-          color={variaveis.vermelhoEscuro}
-          bkColor={variaveis.branco}
-          fontSize="14px"
-          onClick={() => handleCartChange('FinishPayment')}
-        >
-          Finalizar pagamento
-        </BtnTema>
-        <BtnTema
           margin="8px 0 0 0"
           width={'100%'}
           color={variaveis.vermelhoEscuro}

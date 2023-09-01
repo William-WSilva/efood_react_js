@@ -67,7 +67,7 @@ export const Cart = ({ isOpen, setIsCartOpen, handleCartChange }: Props) => {
           color={variaveis.vermelhoEscuro}
           bkColor={variaveis.branco}
           fontSize="14px"
-          onClick={() => handleCartChange('DeliveryDetails')}
+          onClick={() => handleCartChange('FormDelivery')}
         >
           Continuar com a entrega
         </BtnTema>

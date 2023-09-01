@@ -24,7 +24,7 @@ import { addItemToCart } from '../../store/reducers/cartReducers'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../store'
 import { formataPreco } from '../../utils'
-import { DeliveryDetails } from '../cart/deliveryDetails'
+import { FormDelivery } from '../cart/FormDelivery'
 import { Payment } from '../cart/Payment'
 import { FinishPayment } from '../cart/FinishPayment'
 
@@ -66,16 +66,16 @@ export const Perfil = () => {
   }
 
   const adicionarAoCarrinho = (selectedPrato: CardapioItem) => {
-    // const itemExists = carrinhoItens.some(
-    //   (item) => item.id === selectedPrato.id
-    // )
-    // if (itemExists) {
-    //   alert('O item já existe no carrinho.')
-    // } else {
-    // } // Verificar se Prato já existe no carrinho
-    dispatch(addItemToCart(selectedPrato))
-    closeModal()
-    handleCartClick()
+    const itemExists = carrinhoItens.some(
+      (item) => item.id === selectedPrato.id
+    )
+    if (itemExists) {
+      alert('O item já existe no carrinho.')
+    } else {
+      dispatch(addItemToCart(selectedPrato))
+      closeModal()
+      handleCartClick()
+    }
     setCurrentCart('cartItens')
   }
 
@@ -208,15 +208,8 @@ export const Perfil = () => {
           handleCartChange={handleCartChange}
         />
       )}
-      {currentCart === 'DeliveryDetails' && (
-        <DeliveryDetails
-          isOpen={isCartOpen}
-          setIsCartOpen={setIsCartOpen}
-          handleCartChange={handleCartChange}
-        />
-      )}
-      {currentCart === 'Payment' && (
-        <Payment
+      {currentCart === 'FormDelivery' && (
+        <FormDelivery
           isOpen={isCartOpen}
           setIsCartOpen={setIsCartOpen}
           handleCartChange={handleCartChange}

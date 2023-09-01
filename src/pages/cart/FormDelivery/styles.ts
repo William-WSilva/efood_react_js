@@ -24,3 +24,14 @@ export const DivCepNum = styled.div`
   grid-template-columns: 1fr 1fr;
   column-gap: 34px;
 `
+
+export const DivNCVV = styled.div`
+  display: grid;
+  grid-template-columns: 228px 1fr;
+  column-gap: 30px;
+`
+export const DivMesAno = styled.div`
+  display: grid;
+  grid-template-columns: 155px 1fr;
+  column-gap: 34px;
+`
