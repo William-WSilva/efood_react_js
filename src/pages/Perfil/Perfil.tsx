@@ -100,7 +100,7 @@ export const Perfil = () => {
             Restaurantes
           </TextMed>
           <Link to="/">
-            <LogoeFood />
+            <LogoeFood title={'Acessar Restaurantes'} />
           </Link>
           <TextMed
             style={{

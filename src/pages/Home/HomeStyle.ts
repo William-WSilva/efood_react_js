@@ -12,21 +12,24 @@ export const HRestaurantes = styled.section`
   align-items: center;
   background-color: ${variaveis.bgClaro};
 
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+
   section {
     margin-top: 80px;
     margin-bottom: 120px;
     width: 1024px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 48px 80px;
+    gap: 5px 80px;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1023px) {
       grid-template-columns: 1fr;
+      justify-items: center;
+      width: 90%;
+      gap: 48px 0;
     }
-  }
-
-  @media (max-width: 768px) {
-    padding: 16px;
   }
 `
 export const BkRestaurante = styled.div<BkRestauranteProps>`
@@ -37,6 +40,10 @@ export const BkRestaurante = styled.div<BkRestauranteProps>`
   width: 100%;
   text-align: end;
   padding: 16px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `
 
 export const TituloNota = styled.div`
@@ -58,6 +65,10 @@ export const RestauranteCardInfo = styled.div`
   border-top: 1px solid transparent;
   padding: 8px;
   background-color: ${variaveis.branco};
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 
   h6 {
     height: 88px;

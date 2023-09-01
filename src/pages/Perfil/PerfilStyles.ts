@@ -8,6 +8,16 @@ export const Container = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    flex-direction: column;
+    text-align: center;
+
+    h3 {
+      margin: 8px 0;
+    }
+  }
 `
 
 export const PCardapio = styled.section`
@@ -25,6 +35,11 @@ export const PCardapio = styled.section`
 
     @media (max-width: 768px) {
       grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 768px) and (max-width: 1023px) {
+      grid-template-columns: 1fr 1fr;
+      width: 90%;
     }
   }
 
@@ -74,6 +89,12 @@ export const PBanner = styled.section`
   height: 280px;
   color: ${variaveis.branco};
 
+  span {
+    @media (max-width: 1024px) {
+      width: 100%;
+    }
+  }
+
   div {
     width: 1024px;
     padding-top: 24px;
@@ -84,6 +105,11 @@ export const PBanner = styled.section`
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     font-size: 28px;
+
+    @media (max-width: 768px) {
+      width: 100%;
+      text-align: center;
+    }
 
     :nth-child(2) {
       font-weight: bold;
@@ -114,7 +140,13 @@ export const Modal = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
     width: 340px;
-    height: 500px;
+    height: 90%;
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    flex-direction: column;
+    width: 600px;
+    height: 90%;
   }
 
   div {
@@ -128,6 +160,10 @@ export const Modal = styled.div`
     h6 {
       margin: 16px 0;
       line-height: 22px;
+
+      @media (min-width: 768px) and (max-width: 1023px) {
+        margin: 8px 0;
+      }
     }
   }
 
@@ -150,6 +186,11 @@ export const Modal = styled.div`
 
     @media (max-width: 768px) {
       width: 100%;
+      margin-bottom: 16px;
+    }
+    @media (min-width: 768px) and (max-width: 1023px) {
+      width: 100%;
+      height: 400px;
       margin-bottom: 16px;
     }
   }
