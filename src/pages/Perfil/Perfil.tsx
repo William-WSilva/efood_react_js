@@ -25,7 +25,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../store'
 import { formataPreco } from '../../utils'
 import { FormDelivery } from '../cart/FormDelivery'
-import { Payment } from '../cart/Payment'
 import { FinishPayment } from '../cart/FinishPayment'
 
 export const Perfil = () => {
@@ -88,6 +87,11 @@ export const Perfil = () => {
   const handleCartChange = (CurrentCart: string) => {
     setCurrentCart(CurrentCart)
   }
+
+  const valorTotal = carrinhoItens.reduce(
+    (total, item) => total + item.preco,
+    0
+  )
 
   return (
     <>
@@ -208,7 +212,7 @@ export const Perfil = () => {
           handleCartChange={handleCartChange}
         />
       )}
-      {currentCart === 'FormDelivery' && (
+      {currentCart === 'FormDelivery' && carrinhoItens.length >= 1 && (
         <FormDelivery
           isOpen={isCartOpen}
           setIsCartOpen={setIsCartOpen}
