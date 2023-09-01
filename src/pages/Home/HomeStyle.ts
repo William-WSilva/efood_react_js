@@ -22,7 +22,7 @@ export const HRestaurantes = styled.section`
     width: 1024px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 5px 80px;
+    gap: 48px 80px;
 
     @media (max-width: 1023px) {
       grid-template-columns: 1fr;
