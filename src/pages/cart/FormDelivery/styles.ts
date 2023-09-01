@@ -35,3 +35,7 @@ export const DivMesAno = styled.div`
   grid-template-columns: 155px 1fr;
   column-gap: 34px;
 `
+export const FrmParagrafo = styled.p`
+  color: ${variaveis.branco};
+  line-height: 22px;
+`

@@ -25,7 +25,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../store'
 import { formataPreco } from '../../utils'
 import { FormDelivery } from '../cart/FormDelivery'
-import { FinishPayment } from '../cart/FinishPayment'
 
 export const Perfil = () => {
   const location = useLocation()
@@ -217,13 +216,6 @@ export const Perfil = () => {
           isOpen={isCartOpen}
           setIsCartOpen={setIsCartOpen}
           handleCartChange={handleCartChange}
-        />
-      )}
-      {currentCart === 'FinishPayment' && (
-        <FinishPayment
-          isOpen={isCartOpen}
-          setIsCartOpen={setIsCartOpen}
-          onClick={() => setIsCartOpen(false)}
         />
       )}
     </>

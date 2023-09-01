@@ -1,12 +1,6 @@
 import { useDispatch } from 'react-redux'
 import { setRestaurantes } from '../store/reducers/restaurantesReducers'
-import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-  ReactNode
-} from 'react'
+import { createContext, useContext, useEffect, ReactNode } from 'react'
 import { useGetFeaturedRestaurantesQuery } from '../services/api'
 
 export type Restaurantes = {
