@@ -21,7 +21,7 @@ export const FinishPayment = ({ isOpen, setIsCartOpen, onClick }: Props) => {
             marginBottom: 16
           }}
         >
-          Pedido realizado - {'ORDER_ID'}
+          Pedido realizado - {'ORDER: ID'}
         </TextMed>
         <FrmParagrafo style={{ color: variaveis.branco }}>
           Estamos felizes em informar que seu pedido já está em processo de
